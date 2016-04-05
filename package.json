@@ -1,0 +1,23 @@
+{
+  "name": "wheelzoom",
+  "version": "1.0.0",
+  "description": "wheelzoom fork",
+  "private": true,
+  "main": "wheelzoom.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OspreyInformatics/wheelzoom.git"
+  },
+  "keywords": [
+    "zoom"
+  ],
+  "author": "jacklmoore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OspreyInformatics/wheelzoom/issues"
+  },
+  "homepage": "https://github.com/OspreyInformatics/wheelzoom#readme"
+}
