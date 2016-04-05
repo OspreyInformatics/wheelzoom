@@ -121,7 +121,6 @@ window.wheelzoom = (function(){
 			// Prevent zooming out beyond the starting size
 			if (bgWidth <= width || bgHeight <= height) {
 				reset();
-				//
 			} else {
 				updateBgStyle();
 			}
