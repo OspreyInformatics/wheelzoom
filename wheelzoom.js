@@ -56,9 +56,31 @@ window.wheelzoom = (function(){
 			updateBgStyle();
 		}
 
+		function zoomIn() {
+			bgWidth += bgWidth*settings.zoom;
+			bgHeight += bgHeight*settings.zoom;
+
+			if (bgWidth <= width || bgHeight <= height) {
+				reset();
+			} else {
+				updateBgStyle();
+			}
+		}
+
+		function zoomOut() {
+			bgWidth -= bgWidth*settings.zoom;
+			bgHeight -= bgHeight*settings.zoom;
+
+			if (bgWidth <= width || bgHeight <= height) {
+				reset();
+			} else {
+				updateBgStyle();
+			}
+		}
+
+
 		function onwheel(e) {
 			var deltaY = 0;
-
 			e.preventDefault();
 
 			if (e.deltaY) { // FireFox 17+ (IE9+, Chrome 31+?)
@@ -77,7 +99,7 @@ window.wheelzoom = (function(){
 			// Record the offset between the bg edge and cursor:
 			var bgCursorX = offsetX - bgPosX;
 			var bgCursorY = offsetY - bgPosY;
-			
+
 			// Use the previous offset to get the percent offset between the bg edge and cursor:
 			var bgRatioX = bgCursorX/bgWidth;
 			var bgRatioY = bgCursorY/bgHeight;
@@ -147,6 +169,8 @@ window.wheelzoom = (function(){
 		}
 
 		var destroy = function (originalProperties) {
+			img.removeEventListener('wheelzoom.zoomOut', zoomOut);
+			img.removeEventListener('wheelzoom.zoomIn', zoomIn);
 			img.removeEventListener('wheelzoom.destroy', destroy);
 			img.removeEventListener('wheelzoom.reset', reset);
 			img.removeEventListener('load', load);
@@ -165,6 +189,8 @@ window.wheelzoom = (function(){
 		});
 
 		img.addEventListener('wheelzoom.destroy', destroy);
+		img.addEventListener('wheelzoom.zoomIn', zoomIn);
+		img.addEventListener('wheelzoom.zoomOut', zoomOut);
 
 		options = options || {};
 
