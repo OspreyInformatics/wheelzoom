@@ -81,6 +81,7 @@ window.wheelzoom = (function(){
 
 		function onwheel(e) {
 			var deltaY = 0;
+			
 			e.preventDefault();
 
 			if (e.deltaY) { // FireFox 17+ (IE9+, Chrome 31+?)
