@@ -81,7 +81,7 @@ window.wheelzoom = (function(){
 
 		function onwheel(e) {
 			var deltaY = 0;
-			
+
 			e.preventDefault();
 
 			if (e.deltaY) { // FireFox 17+ (IE9+, Chrome 31+?)
@@ -121,6 +121,7 @@ window.wheelzoom = (function(){
 			// Prevent zooming out beyond the starting size
 			if (bgWidth <= width || bgHeight <= height) {
 				reset();
+				//
 			} else {
 				updateBgStyle();
 			}
